@@ -1,0 +1,46 @@
+{
+  "name": "emex-shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": ["src"],
+  "exports": {
+    "./utils": "./src/utils/index.js",
+    "./hooks": "./src/hooks/index.js",
+    "./components": "./src/components/index.js",
+    "./helpers": "./src/helpers/index.js",
+    "./enums": "./src/enums.js",
+    "./constants": "./src/constants.js"
+  },
+  "scripts": {
+    "vitest": "vitest",
+    "vitest:ui": "vitest --ui",
+    "lint": "biome lint --write ./src ./tests *.*",
+    "format": "biome format --write ./src ./tests *.*",
+    "check": "biome check --write ./src ./tests *.*"
+  },
+  "dependencies": {
+    "@microsoft/signalr": "^8.0.7",
+    "@phosphor-icons/react": "^2.1.7",
+    "js-cookie": "^3.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "redaxios": "^0.5.1",
+    "sweetalert2": "^11.12.3",
+    "sweetalert2-react-content": "^5.0.7",
+    "swr": "^2.2.5",
+    "tailwind-styled-components": "^2.2.0",
+    "wouter": "^3.3.1",
+    "zaman": "^2.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@gikdev/tx": "^0.2.1-beta",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/ui": "^2.0.5",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.5"
+  }
+}

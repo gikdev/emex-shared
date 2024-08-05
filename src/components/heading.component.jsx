@@ -18,4 +18,4 @@ function Heading({ className = "", size = 2, as: Tag = "h2", children, ...delega
   )
 }
 
-export default Heading
+export { Heading }

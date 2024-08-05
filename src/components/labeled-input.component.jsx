@@ -1,10 +1,10 @@
-import { Input } from "."
 import { forwardRef, useId } from "react"
+import { Input } from "."
 
-function LabeledInput({ labelTextPrimary, labelTextSecondary = "", ...delegated }, ref) {
+function LabeledInputComponent({ labelTextPrimary, labelTextSecondary = "", ...delegated }, ref) {
   const idToUse = useId()
   const id = `labeled-input-${idToUse}`
-  
+
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={id} className="flex justify-between items-center">
@@ -16,4 +16,6 @@ function LabeledInput({ labelTextPrimary, labelTextSecondary = "", ...delegated 
   )
 }
 
-export default forwardRef(LabeledInput)
+const LabeledInput = forwardRef(LabeledInputComponent)
+
+export { LabeledInput }

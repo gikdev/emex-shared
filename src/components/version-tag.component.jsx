@@ -16,4 +16,4 @@ function VersionTag({ version, usePrefix = false }) {
   )
 }
 
-export default VersionTag
+export { VersionTag }

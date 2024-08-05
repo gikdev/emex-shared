@@ -8,4 +8,4 @@ const Hr = ({ className, ...delegated }) => (
   />
 )
 
-export default Hr
+export { Hr }

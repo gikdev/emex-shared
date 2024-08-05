@@ -6,8 +6,10 @@ const StyledInput = tw.input`
   focus:border-transparent focus:bg-slatedark-5 focus:text-slatedark-12
 `
 
-function Input({ className, ...delegated }, ref) {
+function InputComponent({ className, ...delegated }, ref) {
   return <StyledInput className={className} ref={ref} {...delegated} />
 }
 
-export default forwardRef(Input)
+const Input = forwardRef(InputComponent)
+
+export { Input }

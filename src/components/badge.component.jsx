@@ -18,4 +18,4 @@ function Badge({ className, theme = "neutral", children, ...delegated }) {
   )
 }
 
-export default Badge
+export { Badge }

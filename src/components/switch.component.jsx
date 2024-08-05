@@ -2,7 +2,7 @@ import * as RadixSwitch from "@radix-ui/react-switch"
 import { forwardRef } from "react"
 import { cn } from "../helpers"
 
-function Switch({ checked, ...delegated }, ref) {
+function SwitchComponent({ checked, ...delegated }, ref) {
   const rootStyles = cn(
     "w-12 transition-all h-7 flex p-1 items-center rounded",
     checked ? "bg-amberdark-9" : "bg-slatedark-6",
@@ -17,4 +17,6 @@ function Switch({ checked, ...delegated }, ref) {
   )
 }
 
-export default forwardRef(Switch)
+const Switch = forwardRef(SwitchComponent)
+
+export { Switch }

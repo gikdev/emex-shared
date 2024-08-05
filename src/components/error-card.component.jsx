@@ -29,4 +29,4 @@ function ErrorCard() {
   )
 }
 
-export default ErrorCard
+export { ErrorCard }

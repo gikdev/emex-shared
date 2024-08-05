@@ -1,6 +1,6 @@
 import { forwardRef, useId } from "react"
 
-function LabeledSwitch({ labelText, ...delegated }, ref) {
+function LabeledSwitchComponent({ labelText, ...delegated }, ref) {
   const idToUse = useId()
   const id = `labeled-switch-${idToUse}`
 
@@ -12,4 +12,6 @@ function LabeledSwitch({ labelText, ...delegated }, ref) {
   )
 }
 
-export default forwardRef(LabeledSwitch)
+const LabeledSwitch = forwardRef(LabeledSwitchComponent)
+
+export { LabeledSwitch }

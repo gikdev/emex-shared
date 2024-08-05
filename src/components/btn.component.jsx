@@ -32,4 +32,4 @@ function Btn({ className = "", themeType = "outline", theme = "neutral", childre
   )
 }
 
-export default Btn
+export { Btn }

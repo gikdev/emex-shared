@@ -6,14 +6,14 @@ function throwErrorIf(condition, message) {
   if (condition) throw new Error(message)
 }
 
-export class Signal {
+class Signal {
   constructor(name, action) {
     this.name = name
     this.action = action
   }
 }
 
-export class Signaler {
+class Signaler {
   constructor() {
     this.signals = new Set()
   }

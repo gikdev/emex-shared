@@ -1,3 +1,4 @@
+import { forwardRef } from "react"
 import tw from "tailwind-styled-components"
 
 const StyledInput = tw.input`
@@ -5,8 +6,8 @@ const StyledInput = tw.input`
   focus:border-transparent focus:bg-slatedark-5 focus:text-slatedark-12
 `
 
-function Input({ className, ...delegated }) {
-  return <StyledInput className={className} {...delegated} />
+function Input({ className, ...delegated }, ref) {
+  return <StyledInput className={className} ref={ref} {...delegated} />
 }
 
-export default Input
+export default forwardRef(Input)

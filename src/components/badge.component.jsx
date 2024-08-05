@@ -10,9 +10,9 @@ const styles = {
   neutral: "bg-slatedark-3 text-slatedark-11",
 }
 
-function Badge({ theme = "neutral", children, ...delegated }) {
+function Badge({ className, theme = "neutral", children, ...delegated }) {
   return (
-    <span className={cn(styles.base, styles[theme])} {...delegated}>
+    <span className={cn(styles.base, styles[theme], className)} {...delegated}>
       {children}
     </span>
   )

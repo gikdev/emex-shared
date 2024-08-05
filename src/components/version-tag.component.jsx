@@ -1,10 +1,19 @@
 import tw from "tailwind-styled-components"
+import { Badge } from "."
 
-const Tag = tw.span`
-  badge badge-ghost fixed start-1 bottom-1 font-mono opacity-50 badge-sm cursor-pointer
-  hover:opacity-100 active:scale-90 hover:badge-lg hover:badge-info transition-all 
+const StyledBadge = tw(Badge)`
+  fixed start-1 bottom-1 font-[monospace] opacity-50 cursor-pointer
+  hover:opacity-100 active:scale-90 hover:text-lg transition-all 
 `
 
-const VersionTag = ({ version }) => <Tag dir="ltr">v{version}</Tag>
+// const VersionTag = ({ version, usePrefix = false }) => <Tag dir="ltr">{usePrefix ? "v" : ""}{version}</Tag>
+function VersionTag({ version, usePrefix = false }) {
+  return (
+    <StyledBadge dir="ltr" theme="info">
+      {usePrefix && "v"}
+      {version}
+    </StyledBadge>
+  )
+}
 
 export default VersionTag

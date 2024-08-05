@@ -1,0 +1,21 @@
+import { cn } from "../helpers"
+
+// text-lg text-xl text-2xl text-3xl text-4xl text-5xl text-6xl text-7xl text-8xl text-9xl
+function levelToClass(level) {
+  if (level < 0 || 9 < level) return "text-reddark-9 bg-reddark-3"
+  if (level === 0) return "text-lg"
+  if (level === 1) return "text-xl"
+  return `text-${level}xl`
+}
+
+function Heading({ className = "", size = 2, as: Tag = "h2", children, ...delegated }) {
+  const styles = cn("font-bold", levelToClass(size), className)
+
+  return (
+    <Tag className={styles} {...delegated}>
+      {children}
+    </Tag>
+  )
+}
+
+export default Heading

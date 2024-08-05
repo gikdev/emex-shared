@@ -1,3 +1,5 @@
+import clsx from "clsx"
+import { twMerge } from "tailwind-merge"
 import { swalert } from "."
 import { VERSIONS } from "../constants"
 
@@ -61,4 +63,6 @@ function handleUpdate(app = "CLIENT") {
   }
 }
 
-export { decimalCountToInputStep, getExpiry, handleUpdate }
+const cn = (...inputs) => twMerge(clsx(inputs))
+
+export { cn, decimalCountToInputStep, getExpiry, handleUpdate }

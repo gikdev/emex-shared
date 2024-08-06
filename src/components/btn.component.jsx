@@ -1,7 +1,13 @@
+import {LoadingSpinner} from "."
 import { cn } from "../helpers"
 
 const styles = {
-  base: "rounded h-10 px-4 active:scale-90 transition-all flex items-center justify-center gap-2",
+  base: `
+    rounded h-10 px-4 active:scale-90 transition-all 
+    flex items-center justify-center gap-2 disabled:bg-slatedark-3 
+    disabled:text-slatedark-11 disabled:opacity-50
+    disabled:active:scale-100 disabled:cursor-not-allowed
+  `,
   filled: {
     success: "bg-jadedark-10 text-jadedark-1",
     error: "bg-reddark-10 text-reddark-1",
@@ -24,14 +30,16 @@ function Btn({
   as: Tag = "button",
   icon: Icon,
   className = "",
+  isLoading = false,
   themeType = "outline",
   theme = "neutral",
   children,
   ...delegated
 }) {
   return (
-    <Tag className={cn(styles.base, styles[themeType][theme], className)} {...delegated}>
+    <Tag disabled={isLoading} className={cn(styles.base, styles[themeType][theme], className)} {...delegated}>
       {!!Icon && <Icon size={24} />}
+      {isLoading && <LoadingSpinner />}
       <span>{children}</span>
     </Tag>
   )

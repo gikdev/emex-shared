@@ -1,7 +1,10 @@
 import { forwardRef, useId } from "react"
 import { Textarea } from "."
 
-function LabeledTextareaComponent({ labelTextPrimary, labelTextSecondary = "", ...delegated }, ref) {
+function LabeledTextareaComponent(
+  { labelTextPrimary, labelTextSecondary = "", ...delegated },
+  ref,
+) {
   const idToUse = useId()
   const id = `labeled-textarea-${idToUse}`
 

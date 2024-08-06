@@ -20,12 +20,17 @@ const styles = {
   },
 }
 
-function Btn({ as: Tag = "button", icon: Icon, className = "", themeType = "outline", theme = "neutral", children, ...delegated }) {
+function Btn({
+  as: Tag = "button",
+  icon: Icon,
+  className = "",
+  themeType = "outline",
+  theme = "neutral",
+  children,
+  ...delegated
+}) {
   return (
-    <Tag 
-      className={cn(styles.base, styles[themeType][theme], className)}
-      {...delegated}
-    >
+    <Tag className={cn(styles.base, styles[themeType][theme], className)} {...delegated}>
       {!!Icon && <Icon size={24} />}
       <span>{children}</span>
     </Tag>

@@ -1,4 +1,5 @@
 import Cookies from "js-cookie"
+import toast from "react-hot-toast"
 import { apiEndpoints, swalert } from "."
 import { deleteAllCookies, randomString } from "../utils"
 
@@ -32,16 +33,11 @@ function handleHTTPErrors(err) {
   const status = err.status
   switch (status) {
     case 400:
-      swalert.error("آخ...", "یه مشکلی پیش اومده...").then(logOut).catch(logOut)
+      toast.error("یه مشکلی پیش اومده...")
       return Promise.reject(new Error("An error occurred. Please try again."))
     case 401:
-      swalert
-        .error(
-          "آخ...",
-          "مثل اینکه نشناختیم شما رو. لطفا دوباره لاگین کن (شایدم یه چیزی رو اشتباه وارد کردی...)",
-        )
-        .then(logOut)
-        .catch(logOut)
+      toast.error("لطفا دوباره لاگین کنید.")
+      setTimeout(logOut, 3000)
       return Promise.reject(new Error("Unauthorized: Please log in again."))
     case 403:
       swalert.error("آخ...", "شرمنده ولی اجازه نداری به این دست بزنی...")
@@ -106,18 +102,24 @@ function logOut() {
  */
 function fetcher(config) {
   return async url => {
+    console.log("generated fetch")
     const res = await fetch(url, config)
-    const data = await res.json()
 
-    if (!res.ok) {
-      handleHTTPErrors(res)
-      const error = new Error("An error occurred while fetching the data.")
-      error.info = await res.json()
-      error.status = res.status
-      throw error
+    if (res.ok) {
+      const data = await res.json()
+      return data
     }
 
-    return data
+    if (res.status === 401) {
+      toast.error("لطفا دوباره لاگین کنید")
+      setTimeout(logOut, 4000)
+      return
+    }
+    const error = new Error("An error occurred while fetching the data.")
+    error.info = await res.json()
+    error.status = res.status
+    handleHTTPErrors(error)
+    throw error
   }
 }
 

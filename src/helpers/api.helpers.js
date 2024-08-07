@@ -102,7 +102,6 @@ function logOut() {
  */
 function fetcher(config) {
   return async url => {
-    console.log("generated fetch")
     const res = await fetch(url, config)
 
     if (res.ok) {

@@ -107,7 +107,7 @@ function logOut() {
 function fetcher(config) {
   return async url => {
     const res = await fetch(url, config)
-    const data = res.json()
+    const data = await res.json()
 
     if (!res.ok) {
       handleHTTPErrors(res)

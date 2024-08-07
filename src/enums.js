@@ -23,6 +23,12 @@ const ENUMS = {
     BUY: 1,
     SELL: 2,
   },
+  PRODUCT_STATUS: {
+    DISABLED: 0,
+    BUY_ONLY: 1,
+    SELL_ONLY: 2,
+    BUY_AND_SELL: 3,
+  },
 }
 
 const PERSIAN_ENUMS = {

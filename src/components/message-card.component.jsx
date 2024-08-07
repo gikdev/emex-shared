@@ -11,7 +11,9 @@ function MessageCard({ title, children }) {
   return (
     <div className={styles.container}>
       <div className="flex flex-col gap-2">
-        <Heading as="h2" size={2} className="text-center">{title}</Heading>
+        <Heading as="h2" size={2} className="text-center">
+          {title}
+        </Heading>
         <Hr />
         <p className="text-center">{children}</p>
       </div>

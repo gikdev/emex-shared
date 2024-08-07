@@ -1,4 +1,4 @@
-import {LoadingSpinner} from "."
+import { LoadingSpinner } from "."
 import { cn } from "../helpers"
 
 const styles = {
@@ -37,7 +37,11 @@ function Btn({
   ...delegated
 }) {
   return (
-    <Tag disabled={isLoading} className={cn(styles.base, styles[themeType][theme], className)} {...delegated}>
+    <Tag
+      disabled={isLoading}
+      className={cn(styles.base, styles[themeType][theme], className)}
+      {...delegated}
+    >
       {!!Icon && <Icon size={24} />}
       {isLoading && <LoadingSpinner />}
       <span>{children}</span>

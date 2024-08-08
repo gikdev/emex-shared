@@ -1,9 +1,9 @@
 import { SpinnerGap } from "@phosphor-icons/react"
 
-function LoadingSpinner() {
+function LoadingSpinner(props) {
   return (
     <span className="text-inherit">
-      <SpinnerGap className="animate-spin" />
+      <SpinnerGap {...props} className="animate-spin" />
     </span>
   )
 }

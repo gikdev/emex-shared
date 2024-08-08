@@ -1,30 +1,37 @@
-import { forwardRef, useCallback, useRef } from "react"
+import { useCallback, useState } from "react"
 
-const Modal = forwardRef(({ children, dialogProps, dialogContentContainerProps }, ref) => (
-  <dialog onCancel={e => e.preventDefault()} {...dialogProps} ref={ref}>
+const Modal = ({ children, dialogProps, dialogContentContainerProps }) => (
+  <dialog onCancel={e => e.preventDefault()} {...dialogProps}>
     <div {...dialogContentContainerProps}>{children}</div>
   </dialog>
-))
+)
 
 function useModal() {
-  const dialogRef = useRef(null)
+  const [isOpen, setIsOpen] = useState(false)
 
-  const closeModal = useCallback(() => dialogRef.current?.close(), [])
-  const openModal = useCallback(() => dialogRef.current?.showModal(), [])
+  const toggleOpen = useCallback(() => setIsOpen(p => !p), [])
+  const closeModal = useCallback(() => setIsOpen(false), [])
+  const openModal = useCallback(() => setIsOpen(true), [])
   const ModalComponent = useCallback(
-    ({ children, dialogContentContainerProps, dialogProps }) => (
-      <Modal
-        dialogProps={dialogProps}
-        dialogContentContainerProps={dialogContentContainerProps}
-        ref={dialogRef}
-      >
-        {children}
-      </Modal>
-    ),
-    [],
+    ({ children, dialogContentContainerProps, dialogProps }) =>
+      isOpen ? (
+        <Modal
+          dialogProps={dialogProps}
+          dialogContentContainerProps={dialogContentContainerProps}
+        >
+          {children}
+        </Modal>
+      ) : null,
+    [isOpen],
   )
 
-  return { Modal: ModalComponent, openModal, closeModal }
+  return {
+    Modal: ModalComponent,
+    openModal,
+    closeModal,
+    isModalOpen: isOpen,
+    toggleModal: toggleOpen,
+  }
 }
 
 export { useModal }

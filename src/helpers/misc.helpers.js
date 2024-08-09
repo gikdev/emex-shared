@@ -1,7 +1,6 @@
 import clsx from "clsx"
 import { twMerge } from "tailwind-merge"
 import { swalert } from "."
-import { VERSIONS } from "../constants"
 
 /** Converts a number to a `step` string for `<input />`
  * @example decimalCountToInputStep(3) // "0.001"
@@ -33,7 +32,7 @@ function getExpiry(seconds) {
  * @param {'CLIENT' | 'ADMIN'} app
  * @returns {void}
  */
-function handleUpdate(app = "CLIENT") {
+function handleUpdate(version) {
   const KEYS = {
     VERSION: "APP_VERSION",
     CHECKED: "LAST_TIME_CHECKED",
@@ -43,13 +42,13 @@ function handleUpdate(app = "CLIENT") {
   const doesCheckedExist = !!localStorage.getItem(KEYS.CHECKED)
 
   if (!doesCheckedExist || !doesVersionExist) {
-    localStorage.setItem(KEYS.VERSION, VERSIONS[app])
+    localStorage.setItem(KEYS.VERSION, version)
     setCheckedNow()
 
     return
   }
 
-  const isUpdated = localStorage.getItem(KEYS.VERSION) === VERSIONS[app]
+  const isUpdated = localStorage.getItem(KEYS.VERSION) === version
 
   if (isUpdated) {
     setCheckedNow()
@@ -57,7 +56,7 @@ function handleUpdate(app = "CLIENT") {
   }
 
   if (!isUpdated) {
-    localStorage.setItem(KEYS.VERSION, VERSIONS[app])
+    localStorage.setItem(KEYS.VERSION, version)
     setCheckedNow()
     swalert.updateApp()
   }

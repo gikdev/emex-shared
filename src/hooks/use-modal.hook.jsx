@@ -15,10 +15,7 @@ function useModal() {
   const ModalComponent = useCallback(
     ({ children, dialogContentContainerProps, dialogProps }) =>
       isOpen ? (
-        <Modal
-          dialogProps={dialogProps}
-          dialogContentContainerProps={dialogContentContainerProps}
-        >
+        <Modal dialogProps={dialogProps} dialogContentContainerProps={dialogContentContainerProps}>
           {children}
         </Modal>
       ) : null,

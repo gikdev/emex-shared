@@ -44,7 +44,7 @@ function Btn({
     >
       {!!Icon && <Icon size={24} />}
       {isLoading && <LoadingSpinner />}
-      <span>{children}</span>
+      {children && <span>{children}</span>}
     </Tag>
   )
 }
